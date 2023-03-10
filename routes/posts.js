@@ -73,16 +73,14 @@ router.get("/:id", async(req, res) => {
         const currentUser = await User.findById(req.body.userId);
         const userPosts = await Post.find({ userId: currentUser._id });
         const friendPosts = await Promise.all(
-            currentUser.followings.map((friendId) => {
-               return Post.find({ userId: friendId });
+            currentUser.followings.map( (friendId) => {
+                return Post.find({ userId: friendId});
             })
         );
-        res.json(userPosts.concat(...friendPosts));
-    }catch(err){ 
+        res.json(userPosts.concat(...friendPosts))
+    }catch(err){
         res.status(500).json(err);
     }
- });
-
-
+});
 
 module.exports = router;
