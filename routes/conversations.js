@@ -13,7 +13,7 @@ router.post("/", async ( req, res ) => {
         res.status(500).json(err)
     }
 });
-//get conv of a user
+//get conversation of a user
 router.get("/:userId", async (req, res) => {
     try{
         const conversation = await Conversation.find({

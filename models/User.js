@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { generateRandomAvatar } =  require("../utils/randomAvatar");
 
 
 const UserSchema = new mongoose.Schema({
@@ -52,9 +53,19 @@ const UserSchema = new mongoose.Schema({
         type:String,
         max:50,
     },
+    avatarUrl: {
+        type: String
+    },
+    avatarImage: {
+        type: String
+    },
     relationship:{
         type:Number,
         enum:[1,2,3],
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 },
 { timestamps:true }
